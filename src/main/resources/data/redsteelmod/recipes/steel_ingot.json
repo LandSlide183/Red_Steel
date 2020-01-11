@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+          [
+            "#"
+          ],
+  "key": {
+    "#": {"item": "redsteelmod:steel_block"}
+  },
+  "result": {
+    "item": "redsteelmod:steel_ingot",
+    "count": 9
+  }
+}

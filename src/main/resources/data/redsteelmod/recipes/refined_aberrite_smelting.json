@@ -1,0 +1,7 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {"item": "redsteelmod:aberrite_ore"},
+  "result": {"item": "redsteelmod:refined_aberrite"},
+  "experience": 0.5,
+  "cookingtime": 250
+}

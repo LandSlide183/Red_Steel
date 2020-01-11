@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+          [
+            "###",
+            "###",
+            "###"
+          ],
+  "key": {
+    "#": {"item": "redsteelmod:red_steel_ingot"}
+  },
+  "result": {
+    "item": "redsteelmod:red_steel_block",
+    "count": 1
+  }
+}

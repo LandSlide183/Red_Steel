@@ -3,7 +3,6 @@ package com.landslide.redsteelmod;
 import com.landslide.redsteelmod.init.ModItemGroups;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -44,10 +43,10 @@ public class ModEventSubscriber {
     @SubscribeEvent
     public static void onRegisterBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll(
-                setupBlock(Material.IRON, "steel_block", 5.0F, 5.0F),
-                setupBlock(Material.IRON, "aberrite_block", 6.0F, 6.0F),
-                setupBlock(Material.IRON, "red_steel_block", 6.0F, 6.0F),
-                setupBlock(Material.ROCK, "aberrite_ore", 3.0F, 3.0F)
+                setupBlock(Material.IRON, "steel_block", 5.0F, 5.0F, 2),
+                setupBlock(Material.IRON, "aberrite_block", 6.0F, 6.0F, 2),
+                setupBlock(Material.IRON, "red_steel_block", 6.0F, 6.0F, 3),
+                setupBlock(Material.ROCK, "aberrite_ore", 3.0F, 3.0F, 2)
         );
         LOGGER.debug("Registered redsteelmod's Block(s)");
     }
@@ -56,8 +55,8 @@ public class ModEventSubscriber {
         return setup(new Item(new Item.Properties().group(group)), name);
     }
 
-    public static Block setupBlock(Material material, String name, float hardness, float resistance) {
-        return setup(new Block(Block.Properties.create(material).hardnessAndResistance(hardness, resistance)), name);
+    public static Block setupBlock(Material material, String name, float hardness, float resistance, int harvestLevel) {
+        return setup(new Block(Block.Properties.create(material).hardnessAndResistance(hardness, resistance).harvestLevel(harvestLevel)), name);
     }
 
     public static <T extends IForgeRegistryEntry<T>> T setup(final T entry, final String name) {

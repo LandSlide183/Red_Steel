@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+          [
+            "##",
+            "##"
+          ],
+  "key": {
+    "#": {"item": "redsteelmod:refined_aberrite"}
+  },
+  "result": {
+    "item": "redsteelmod:aberrite_block",
+    "count": 1
+  }
+}
