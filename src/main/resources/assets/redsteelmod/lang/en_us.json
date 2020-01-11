@@ -1,0 +1,11 @@
+{
+  "itemGroup.redsteelmod": "Red Steel",
+  "item.redsteelmod.steel_ingot": "Steel Ingot",
+  "item.redsteelmod.refined_aberrite": "Refined Aberrite",
+  "item.redsteelmod.red_steel_ingot": "Red Steel Ingot",
+  "item.redsteelmod.refined_redstone": "Refined Redstone",
+  "block.redsteelmod.steel_block": "Steel Block",
+  "block.redsteelmod.aberrite_block": "Aberrite Block",
+  "block.redsteelmod.red_steel_block": "Red Steel Block",
+  "block.redsteelmod.aberrite_ore": "Aberrite Ore"
+}
