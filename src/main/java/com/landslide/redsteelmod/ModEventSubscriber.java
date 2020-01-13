@@ -25,16 +25,16 @@ public class ModEventSubscriber {
         final IForgeRegistry<Item> registry = event.getRegistry();
 
         registry.registerAll(
-                setupItem(ModItemGroups.MOD_ITEM_GROUP, "steel_ingot"),
-                setupItem(ModItemGroups.MOD_ITEM_GROUP, "refined_aberrite"),
-                setupItem(ModItemGroups.MOD_ITEM_GROUP, "red_steel_ingot"),
-                setupItem(ModItemGroups.MOD_ITEM_GROUP, "refined_redstone")
+                setupItem(ModItemGroups.MOD_MAIN_GROUP, "steel_ingot"),
+                setupItem(ModItemGroups.MOD_MAIN_GROUP, "refined_aberrite"),
+                setupItem(ModItemGroups.MOD_MAIN_GROUP, "red_steel_ingot"),
+                setupItem(ModItemGroups.MOD_MAIN_GROUP, "refined_redstone")
         );
 
         //to turn all of the blocks into items
         ForgeRegistries.BLOCKS.getValues().stream().filter(block -> block.getRegistryName().getNamespace().equals(RedSteelMain.MODID)).forEach(block -> {
             //a line to create new Item.Properties to pass to a new BlockItem which is registered with the registry name of the block
-            registry.register(setup(new BlockItem(block, new Item.Properties().group(ModItemGroups.MOD_ITEM_GROUP)), block.getRegistryName()));
+            registry.register(setup(new BlockItem(block, new Item.Properties().group(ModItemGroups.MOD_MAIN_GROUP)), block.getRegistryName()));
         });
         LOGGER.debug("Registered redsteelmod's Item(s) and ItemBlock(s).");
     }

@@ -11,9 +11,9 @@ public class ModItemGroups {
 
     public static class ModItemGroup extends ItemGroup {
         private final Supplier<ItemStack> iconSupplier;
-        public ModItemGroup(String name, Supplier<ItemStack> iconSupplier) {
+        public ModItemGroup(String name, Supplier<ItemStack> icon) {
             super(name);
-            this.iconSupplier = iconSupplier;
+            iconSupplier = icon;
         }
 
 
@@ -23,5 +23,5 @@ public class ModItemGroups {
         }
     }
 
-    public static final ItemGroup MOD_ITEM_GROUP = new ModItemGroup(RedSteelMain.MODID, () -> new ItemStack(ModItems.STEEL_INGOT));
+    public static final ItemGroup MOD_MAIN_GROUP = new ModItemGroup(RedSteelMain.MODID, () -> new ItemStack(ModItems.RED_STEEL_INGOT));
 }
