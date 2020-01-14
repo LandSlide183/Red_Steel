@@ -1,6 +1,7 @@
 package com.landslide.redsteelmod;
 
 import com.landslide.redsteelmod.init.ModItemGroups;
+import com.landslide.redsteelmod.world.gen.OreGeneration;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
@@ -10,6 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
@@ -18,7 +20,7 @@ import org.apache.logging.log4j.Logger;
 
 @EventBusSubscriber(modid = RedSteelMain.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class ModEventSubscriber {
-    private static final Logger LOGGER = LogManager.getLogger(RedSteelMain.MODID + " ModEventSubscriber");
+    private static final Logger LOGGER = RedSteelMain.LOGGER;
     //this is where the items go
     @SubscribeEvent
     public static void onRegisterItems(RegistryEvent.Register<Item> event) {
@@ -50,6 +52,7 @@ public class ModEventSubscriber {
         );
         LOGGER.debug("Registered redsteelmod's Block(s)");
     }
+
 
     public static Item setupItem(ItemGroup group, String name) {
         return setup(new Item(new Item.Properties().group(group)), name);
