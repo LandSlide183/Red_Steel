@@ -24,4 +24,5 @@ public class ModItemGroups {
     }
 
     public static final ItemGroup MOD_MAIN_GROUP = new ModItemGroup(RedSteelMain.MODID, () -> new ItemStack(ModItems.RED_STEEL_INGOT));
+    public static final ItemGroup MOD_TOOL_GROUP = new ModItemGroup(RedSteelMain.MODID, () -> new ItemStack(ModItems.STEEL_SWORD));
 }

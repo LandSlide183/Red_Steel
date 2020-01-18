@@ -7,5 +7,14 @@
   "block.redsteelmod.steel_block": "Steel Block",
   "block.redsteelmod.aberrite_block": "Aberrite Block",
   "block.redsteelmod.red_steel_block": "Red Steel Block",
-  "block.redsteelmod.aberrite_ore": "Aberrite Ore"
+  "block.redsteelmod.aberrite_ore": "Aberrite Ore",
+  "item.redsteelmod.steel_axe": "Steel Axe",
+  "item.redsteelmod.steel_hoe": "Steel Hoe",
+  "item.redsteelmod.steel_sword": "Steel Sword",
+  "item.redsteelmod.steel_pickaxe": "Steel Pickaxe",
+  "item.redsteelmod.steel_shovel": "Steel Shovel",
+  "item.redsteelmod.steel_helmet": "Steel Helmet",
+  "item.redsteelmod.steel_chestplate": "Steel Chestplate",
+  "item.redsteelmod.steel_leggings": "Steel Leggings",
+  "item.redsteelmod.steel_boots": "Steel Boots"
 }

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+          [
+            "#",
+            "#",
+            "S"
+          ],
+  "key": {
+    "#": {"item": "redsteelmod:steel_ingot"},
+    "S": {"item":  "minecraft:stick"}
+  },
+  "result": {
+    "item": "redsteelmod:steel_sword",
+    "count": 1
+  }
+}
