@@ -1,5 +1,6 @@
 package com.landslide.redsteelmod;
 
+import com.landslide.redsteelmod.config.RedSteelConfig;
 import com.landslide.redsteelmod.init.ModItemGroups;
 import com.landslide.redsteelmod.world.gen.OreGeneration;
 import net.minecraft.block.Block;
@@ -11,6 +12,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
@@ -53,6 +55,16 @@ public class ModEventSubscriber {
         LOGGER.debug("Registered redsteelmod's Block(s)");
     }
 
+    @SubscribeEvent
+    public static void onModEventConfig(final ModConfig.ModConfigEvent configEvent) {
+        RedSteelConfig.bakeServerConfig();
+    }
+
+    @SubscribeEvent
+    public static void commonSetup(final FMLCommonSetupEvent event) {
+        RedSteelConfig.bakeServerConfig();
+        OreGeneration.setupOreGeneration();
+    }
 
     public static Item setupItem(ItemGroup group, String name) {
         return setup(new Item(new Item.Properties().group(group)), name);
