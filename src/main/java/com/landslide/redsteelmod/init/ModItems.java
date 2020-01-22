@@ -14,6 +14,7 @@ public class ModItems {
     public static final Item STEEL_AXE = null;
     public static final Item STEEL_HOE = null;
     public static final Item STEEL_PICKAXE = null;
+    public static final Item STEEL_SHOVEL = null;
     public static final Item STEEL_HELMET = null;
     public static final Item STEEL_CHESTPLATE = null;
     public static final Item STEEL_LEGGINGS = null;
