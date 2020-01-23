@@ -1,6 +1,7 @@
 package com.landslide.redsteelmod;
 
 import com.google.common.base.Preconditions;
+import com.landslide.redsteelmod.blocks.CombinationSmelter;
 import com.landslide.redsteelmod.config.RedSteelConfig;
 import com.landslide.redsteelmod.init.ModArmorMaterials;
 import com.landslide.redsteelmod.init.ModBlockMaterials;
@@ -61,10 +62,11 @@ public class ModEventSubscriber {
     @SubscribeEvent
     public static void onRegisterBlocks(RegistryEvent.Register<Block> event) {
         event.getRegistry().registerAll(
-                setup(new Block(Block.Properties.create(Material.IRON).hardnessAndResistance(6.0F, 7.0F).harvestTool(ToolType.PICKAXE).harvestLevel(2)), "aberrite_block"),
-                setup(new Block(Block.Properties.create(Material.IRON).hardnessAndResistance(5.0F, 6.0F).harvestTool(ToolType.PICKAXE).harvestLevel(2)), "steel_block"),
+                setup(new CombinationSmelter(Block.Properties.create(Material.IRON).hardnessAndResistance(5.0F, 6.0F).harvestTool(ToolType.PICKAXE).harvestLevel(2)), "combination_smelter"),
+                setup(new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(6.0F, 7.0F).harvestTool(ToolType.PICKAXE).harvestLevel(2)), "aberrite_block"),
+                setup(new Block(Block.Properties.create(Material.EARTH).hardnessAndResistance(5.0F, 6.0F).harvestTool(ToolType.PICKAXE).harvestLevel(2)), "steel_block"),
                 setup(new Block(Block.Properties.create(Material.IRON).hardnessAndResistance(7.0F, 7.0F).harvestTool(ToolType.PICKAXE).harvestLevel(3)), "red_steel_block"),
-                setup(new Block(Block.Properties.create(Material.IRON).hardnessAndResistance(3.5F, 4.5F).harvestTool(ToolType.PICKAXE).harvestLevel(2)), "aberrite_ore")
+                setup(new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(3.5F, 4.5F).harvestTool(ToolType.PICKAXE).harvestLevel(2)), "aberrite_ore")
                 );
         LOGGER.debug("Registered redsteelmod's Block(s)");
     }

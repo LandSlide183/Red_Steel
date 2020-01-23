@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "redsteelmod:block/combination_smelter" },
+    "facing=south": { "model": "redsteelmod:block/combination_smelter", "y": 180 },
+    "facing=west":  { "model": "redsteelmod:block/combination_smelter", "y": 270 },
+    "facing=east":  { "model": "redsteelmod:block/combination_smelter", "y": 90 }
+  }
+}

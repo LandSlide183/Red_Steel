@@ -16,5 +16,6 @@
   "item.redsteelmod.steel_helmet": "Steel Helmet",
   "item.redsteelmod.steel_chestplate": "Steel Chestplate",
   "item.redsteelmod.steel_leggings": "Steel Leggings",
-  "item.redsteelmod.steel_boots": "Steel Boots"
+  "item.redsteelmod.steel_boots": "Steel Boots",
+  "block.redsteelmod.combination_smelter": "Combination Smelter"
 }

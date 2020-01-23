@@ -1,0 +1,8 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "top": "redsteelmod:block/combination_smelter_top",
+    "front": "redsteelmod:block/combination_smelter_front",
+    "side": "redsteelmod:block/combination_smelter_side"
+  }
+}
