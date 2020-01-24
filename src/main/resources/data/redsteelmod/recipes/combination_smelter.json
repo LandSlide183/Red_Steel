@@ -2,13 +2,12 @@
   "type": "minecraft:crafting_shaped",
   "pattern":
           [
-            "ICI",
-            "FBF",
-            "SCS"
+            "IFI",
+            "SFS",
+            "SBS"
           ],
   "key": {
     "I": {"item": "minecraft:iron_ingot"},
-    "C": {"item": "minecraft:cobblestone"},
     "F": {"item": "minecraft:furnace"},
     "B": {"item": "minecraft:iron_block"},
     "S": {"item": "minecraft:smooth_stone"}

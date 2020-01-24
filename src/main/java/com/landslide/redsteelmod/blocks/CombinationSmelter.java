@@ -18,20 +18,16 @@ public class CombinationSmelter extends Block {
     public CombinationSmelter(Properties properties) {
         super(properties);
     }
-    /*
+/*
     @Override
-    public void onBlockPlacedBy(World world, BlockPos pos, BlockState state, @Nullable LivingEntity entity, ItemStack stack) {
-        if (entity != null) {
-            world.setBlockState(pos, state.with(BlockStateProperties.FACING, getFacingFromEntity(pos, entity)), 2);
-        }
+    public boolean hasTileEntity(BlockState state) {
+        return true;
     }
-    */
+*/
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         return this.getDefaultState().with(BlockStateProperties.FACING, context.getPlacementHorizontalFacing().getOpposite());
     }
-
-
 
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
