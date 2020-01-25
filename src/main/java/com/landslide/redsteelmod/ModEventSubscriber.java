@@ -2,16 +2,16 @@ package com.landslide.redsteelmod;
 
 import com.google.common.base.Preconditions;
 import com.landslide.redsteelmod.blocks.CombinationSmelter;
+import com.landslide.redsteelmod.blocks.tileentity.CombinationSmelterTile;
 import com.landslide.redsteelmod.config.RedSteelConfig;
-import com.landslide.redsteelmod.init.ModArmorMaterials;
-import com.landslide.redsteelmod.init.ModBlockMaterials;
-import com.landslide.redsteelmod.init.ModItemGroups;
-import com.landslide.redsteelmod.init.ModItemMaterials;
+import com.landslide.redsteelmod.init.*;
 import com.landslide.redsteelmod.world.gen.OreGeneration;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.*;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
@@ -24,6 +24,8 @@ import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.util.function.Supplier;
 
 @EventBusSubscriber(modid = RedSteelMain.MODID, bus = EventBusSubscriber.Bus.MOD)
 public class ModEventSubscriber {
@@ -72,6 +74,13 @@ public class ModEventSubscriber {
     }
 
     @SubscribeEvent
+    public static void onRegisterTileEntities(final RegistryEvent.Register<TileEntityType<?>> event) {
+        event.getRegistry().registerAll(
+                setupTileEntity(CombinationSmelterTile::new, "combination_smelter_tile", ModBlocks.COMBINATION_SMELTER)
+        );
+    }
+
+    @SubscribeEvent
     public static void onModEventConfig(final ModConfig.ModConfigEvent configEvent) {
         RedSteelConfig.bakeServerConfig();
     }
@@ -80,6 +89,10 @@ public class ModEventSubscriber {
     public static void onCommonSetup(final FMLCommonSetupEvent event) {
         RedSteelConfig.bakeServerConfig();
         OreGeneration.setupOreGeneration();
+    }
+
+    public static TileEntityType<?> setupTileEntity(Supplier<? extends TileEntity> classIn, String name, Block... block) {
+        return TileEntityType.Builder.create(classIn, block).build(null).setRegistryName(name);
     }
 
     public static <T extends IForgeRegistryEntry<T>> T setup(final T entry, final String name) {

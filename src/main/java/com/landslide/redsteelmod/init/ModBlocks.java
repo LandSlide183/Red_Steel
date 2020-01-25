@@ -10,4 +10,5 @@ public class ModBlocks {
     public static final Block ABERRITE_ORE = null;
     public static final Block RED_STEEL_BLOCK = null;
     public static final Block STEEL_BLOCK = null;
+    public static final Block COMBINATION_SMELTER = null;
 }
