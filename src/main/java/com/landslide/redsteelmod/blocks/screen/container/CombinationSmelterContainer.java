@@ -27,7 +27,6 @@ public class CombinationSmelterContainer extends Container {
 
     public CombinationSmelterContainer(PlayerInventory inventory, int windowId, BlockPos pos) {
         super(ModContainers.COMBINATION_SMELTER_CONTAINER, windowId);
-        RedSteelMain.LOGGER.debug("Constructor called");
         playerInventory = inventory;
         inventoryHandler = new InvWrapper(inventory);
         playerEntity = inventory.player;
@@ -39,7 +38,6 @@ public class CombinationSmelterContainer extends Container {
             addSlot(h, 3, 100, 38);
             addSlot(h, 4, 124, 38);
         });
-        RedSteelMain.LOGGER.debug("Laying out player inventory slots");
         layoutPlayerInventorySlots(8, 84);
     }
 
@@ -70,16 +68,13 @@ public class CombinationSmelterContainer extends Container {
     }
 
     private void layoutPlayerInventorySlots(int leftCol, int topRow) {
-        RedSteelMain.LOGGER.debug("Starting");
         playerInvSlotStartIndex = inventorySlots.size();
-        RedSteelMain.LOGGER.debug("startindex set");
         // Player inventory
         addSlotBox(inventoryHandler, 9, leftCol, topRow, 9, 18, 3, 18);
-        RedSteelMain.LOGGER.debug("inventory set");
+
         // Hotbar
         topRow += 58;
         addSlotRange(inventoryHandler, 0, leftCol, topRow, 9, 18);
-        RedSteelMain.LOGGER.debug("hotbar set");
     }
 
     @Override

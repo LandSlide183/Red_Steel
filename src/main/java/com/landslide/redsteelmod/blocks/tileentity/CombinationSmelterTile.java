@@ -82,7 +82,7 @@ public class CombinationSmelterTile extends TileEntity implements ITickableTileE
     @Nonnull
     @Override
     public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-        Direction facing = getWorld().getBlockState(getPos()).get(BlockStateProperties.FACING);
+
         if (cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
             if (side == null) {
                 return inventoryCapability.cast();
@@ -93,6 +93,7 @@ public class CombinationSmelterTile extends TileEntity implements ITickableTileE
                 case DOWN:
                     return inventoryCapabilityDown.cast();
                 default:
+                    Direction facing = getWorld().getBlockState(getPos()).get(BlockStateProperties.FACING);
                     if (side.equals(facing)) {
                         return inventoryCapabilityFront.cast();
                     } else if (side.equals(facing.getOpposite())) {
