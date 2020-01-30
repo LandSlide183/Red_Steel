@@ -1,28 +1,35 @@
 package com.landslide.redsteelmod;
 
-import com.google.common.base.Preconditions;
 import com.landslide.redsteelmod.blocks.CombinationSmelter;
+import com.landslide.redsteelmod.blocks.screen.CombinationSmelterScreen;
+import com.landslide.redsteelmod.blocks.screen.container.CombinationSmelterContainer;
 import com.landslide.redsteelmod.blocks.tileentity.CombinationSmelterTile;
 import com.landslide.redsteelmod.config.RedSteelConfig;
 import com.landslide.redsteelmod.init.*;
 import com.landslide.redsteelmod.world.gen.OreGeneration;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.inventory.container.Container;
+import net.minecraft.inventory.container.ContainerType;
 import net.minecraft.item.*;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.ToolType;
+import net.minecraftforge.common.extensions.IForgeContainerType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.function.Supplier;
@@ -89,6 +96,21 @@ public class ModEventSubscriber {
     public static void onCommonSetup(final FMLCommonSetupEvent event) {
         RedSteelConfig.bakeServerConfig();
         OreGeneration.setupOreGeneration();
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    @SubscribeEvent
+    public static void onClientSetup(final FMLClientSetupEvent event) {
+        ScreenManager.registerFactory(ModContainers.COMBINATION_SMELTER_CONTAINER, CombinationSmelterScreen::new);
+    }
+
+    @SubscribeEvent
+    public static void onRegisterContainers(final RegistryEvent.Register<ContainerType<?>> event) {
+        event.getRegistry().registerAll(
+            IForgeContainerType.create((windowId, inv, data) -> {
+                return new CombinationSmelterContainer(inv, windowId, data.readBlockPos());
+            }).setRegistryName("combination_smelter_container")
+        );
     }
 
     public static TileEntityType<?> setupTileEntity(Supplier<? extends TileEntity> classIn, String name, Block... block) {
