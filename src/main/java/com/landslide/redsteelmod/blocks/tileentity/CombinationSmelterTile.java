@@ -33,9 +33,9 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 public class CombinationSmelterTile extends TileEntity implements ITickableTileEntity, INamedContainerProvider {
-    public static final int FUEL_SLOT = 0;
-    public static final int PRIMARY_SLOT = 1;
-    public static final int SECONDARY_SLOT = 2;
+    public static final int PRIMARY_SLOT = 0;
+    public static final int SECONDARY_SLOT = 1;
+    public static final int FUEL_SLOT = 2;
     public static final int PRIMARY_OUTPUT_SLOT = 3;
     public static final int SECONDARY_OUTPUT_SLOT = 4;
 
@@ -65,12 +65,6 @@ public class CombinationSmelterTile extends TileEntity implements ITickableTileE
 
     public CombinationSmelterTile() {
         super(ModTileEntities.COMBINATION_SMELTER_TILE);
-        /*
-        World world = getWorld();
-        BlockPos pos = getPos();
-        BlockState state = world.getBlockState(pos);
-        directionFront = state.get(BlockStateProperties.FACING);
-        */
     }
 
     @Override

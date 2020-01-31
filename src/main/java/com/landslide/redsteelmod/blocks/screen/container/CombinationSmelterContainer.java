@@ -18,6 +18,11 @@ import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
 
 public class CombinationSmelterContainer extends Container {
+    public static final int PRIMARY_SLOT = 0;
+    public static final int SECONDARY_SLOT = 1;
+    public static final int FUEL_SLOT = 2;
+    public static final int PRIMARY_OUTPUT_SLOT = 3;
+    public static final int SECONDARY_OUTPUT_SLOT = 4;
 
     private TileEntity tileEntity;
     private PlayerEntity playerEntity;
@@ -32,11 +37,11 @@ public class CombinationSmelterContainer extends Container {
         playerEntity = inventory.player;
         tileEntity = playerEntity.world.getTileEntity(pos);
         tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(h -> {
-            addSlot(h, 0, 47, 53);
-            addSlot(h, 1, 37, 17);
-            addSlot(h, 2, 55, 17);
-            addSlot(h, 3, 100, 38);
-            addSlot(h, 4, 124, 38);
+            addSlot(h, PRIMARY_SLOT, 37, 17);
+            addSlot(h, SECONDARY_SLOT, 55, 17);
+            addSlot(h, FUEL_SLOT, 47, 53);
+            addSlot(h, PRIMARY_OUTPUT_SLOT, 100, 38);
+            addSlot(h, SECONDARY_OUTPUT_SLOT, 124, 38);
         });
         layoutPlayerInventorySlots(8, 84);
     }
@@ -84,21 +89,21 @@ public class CombinationSmelterContainer extends Container {
         if (slot != null && slot.getHasStack()) {
             ItemStack stack = slot.getStack();
             itemstack = stack.copy();
-            if (index == 0) {
-                if (!this.mergeItemStack(stack, 1, 37, true)) {
+            if (index < playerInvSlotStartIndex) {
+                if (!this.mergeItemStack(stack, playerInvSlotStartIndex, playerInvSlotStartIndex + 36, true)) {
                     return ItemStack.EMPTY;
                 }
                 slot.onSlotChange(stack, itemstack);
             } else {
                 if (FurnaceTileEntity.isFuel(stack)) {
-                    if (!this.mergeItemStack(stack, 0, 1, false)) {
+                    if (!this.mergeItemStack(stack, FUEL_SLOT, FUEL_SLOT + 1, false)) {
                         return ItemStack.EMPTY;
                     }
                 } else if (index < playerInvSlotStartIndex + 27) {
-                    if (!this.mergeItemStack(stack, 28, 37, false)) {
+                    if (!this.mergeItemStack(stack, playerInvSlotStartIndex + 27, playerInvSlotStartIndex + 36, false)) {
                         return ItemStack.EMPTY;
                     }
-                } else if (index < playerInvSlotStartIndex + 36 && !this.mergeItemStack(stack, 1, 28, false)) {
+                } else if (index < playerInvSlotStartIndex + 36 && !this.mergeItemStack(stack, playerInvSlotStartIndex, playerInvSlotStartIndex + 1, false)) {
                     return ItemStack.EMPTY;
                 }
             }

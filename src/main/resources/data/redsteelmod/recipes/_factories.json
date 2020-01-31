@@ -1,0 +1,5 @@
+{
+  "recipes": {
+    "combination_smelting": "redsteelmod.recipe.CombinationSmeltingRecipeSerializer"
+  }
+}
