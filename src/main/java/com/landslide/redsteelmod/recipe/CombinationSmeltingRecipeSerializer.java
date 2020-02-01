@@ -27,15 +27,20 @@ public class CombinationSmeltingRecipeSerializer<T extends CombinationSmeltingRe
     @Override
     public T read(ResourceLocation recipeId, JsonObject json) {
 
-
         String group = JSONUtils.getString(json, "group", "");
 
         Ingredient ingredient = Ingredient.deserialize(JSONUtils.getJsonObject(json, "ingredient"));
 
         JsonArray jsonMetallurgies = JSONUtils.getJsonArray(json, "metallurgy");
-        HashMap<Ingredient, ItemStack> metallurgies = new HashMap<Ingredient, ItemStack>();
+
+        HashMap<Ingredient, ResultBundle> metallurgies = new HashMap<Ingredient, ResultBundle>();
         for (JsonElement obj : jsonMetallurgies) {
-            metallurgies.put(Ingredient.deserialize(JSONUtils.getJsonArray(obj, "modifier")), ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(obj, "result")));
+            Ingredient agent = Ingredient.deserialize(JSONUtils.getJsonArray(obj, "agent"));
+            metallurgies.put(agent, ResultBundle.create(
+                    ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(obj, "result")),
+                    JSONUtils.getInt((JsonObject) obj, "time", 200),
+                    JSONUtils.getFloat((JsonObject) obj, "experience", 0.0F)
+            ));
         }
 
         return factory.create(recipeId, group, ingredient, metallurgies);
@@ -44,14 +49,14 @@ public class CombinationSmeltingRecipeSerializer<T extends CombinationSmeltingRe
     @Nullable
     @Override
     public T read(ResourceLocation recipeId, PacketBuffer buffer) {
-        return null;
+        return read(recipeId, JSONUtils.fromJson(buffer.readString()));
     }
 
     @Override
     public void write(PacketBuffer buffer, T recipe) {
-
+        buffer.writeString(recipe.getJson().getAsString());
     }
     public interface IFactory<T extends CombinationSmeltingRecipe> {
-        T create(ResourceLocation resourceLocation, String group, Ingredient ingredient, HashMap<Ingredient, ItemStack> map);
+        T create(ResourceLocation resourceLocation, String group, Ingredient ingredient, HashMap<Ingredient, ResultBundle> map);
     }
 }
