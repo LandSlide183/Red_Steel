@@ -48,7 +48,7 @@ public class RedSteelConfig {
         public ServerConfig(ForgeConfigSpec.Builder builder) {
             String translation = RedSteelMain.MODID + ".config.";
             generateOresOverworld = builder
-                    .comment("generateOresOverworld is a boolean that determines if Red Steel's overworld ores are generated. Defaults to two.")
+                    .comment("generateOresOverworld is a boolean that determines if Red Steel's ores are generated. Defaults to true.")
                     .translation(translation + "generateOresOverworld")
                     .define("generateOresOverworld", true);
             aberriteLowerFrequency = builder
@@ -58,7 +58,7 @@ public class RedSteelConfig {
             aberriteHigherFrequency = builder
                     .comment("The amount of higher aberrite ore per chunk, defaults to one.")
                     .translation(translation + " aberriteLowerFrequency")
-                    .defineInRange("aberriteLowerFrequency", 1, 0, 50);
+                    .defineInRange("aberriteHigherFrequency", 1, 0, 50);
         }
     }
 }

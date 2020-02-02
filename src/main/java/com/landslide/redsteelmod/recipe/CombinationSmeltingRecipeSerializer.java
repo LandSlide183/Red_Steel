@@ -43,7 +43,7 @@ public class CombinationSmeltingRecipeSerializer<T extends CombinationSmeltingRe
             ));
         }
 
-        return factory.create(recipeId, group, ingredient, metallurgies);
+        return factory.create(recipeId, group, ingredient, metallurgies, json);
     }
 
     @Nullable
@@ -54,9 +54,10 @@ public class CombinationSmeltingRecipeSerializer<T extends CombinationSmeltingRe
 
     @Override
     public void write(PacketBuffer buffer, T recipe) {
+
         buffer.writeString(recipe.getJson().getAsString());
     }
     public interface IFactory<T extends CombinationSmeltingRecipe> {
-        T create(ResourceLocation resourceLocation, String group, Ingredient ingredient, HashMap<Ingredient, ResultBundle> map);
+        T create(ResourceLocation recipeId, String group, Ingredient ingredient, HashMap<Ingredient, ResultBundle> map, JsonObject json);
     }
 }
